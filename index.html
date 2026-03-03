@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I.F. Brand Wizard Plugin Demo</title>
     <meta property="og:title" content="I.F. Brand Wizard Plugin Demo">
-    <meta property="og:description" content="Watch the Intl. Farming Brand Wizard Plugin in action â auto-enforce brand identity on documents, dashboards, and presentations.">
+    <meta property="og:description" content="Watch the Intl. Farming Brand Wizard Plugin in action — auto-enforce brand identity on documents, dashboards, and presentations.">
     <meta property="og:type" content="video.other">
     <!-- Roobert + Recital: Intl. Farming brand typefaces served from /fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
@@ -31,18 +31,11 @@
   font-style: normal;
   font-display: swap;
 }
-:root {
-  --azure: #10303A; --jean: #7C9CA3; --dark-ochre: #9E6C2F; --sunflower: #DDBB78;
-  --burlap: #C7AE86; --ecru: #e8e4db; --white: #FFFFFF; --black: #000000;
-  --almost-white: #f7f4ed; --dusty-blue: #3e6168;
-  --line-subtle: #CFCABE; --line-regular: #B6AF9E;
-  --azure-muted: #4A6670; --ecru-dark: #DDD7CF; --warm-ochre: #a48459;
-}
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: 'Roobert', sans-serif;
-  background: var(--ecru);
-  color: var(--dusty-blue);
+  background: #B09A6F;
+  color: #f0ebe2;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -50,45 +43,43 @@ body {
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   font-size: 18px;
-  color: var(--azure);
   vertical-align: middle;
 }
 .page-header {
-  padding: 28px 28px 0;
+  padding: 60px 28px 0;
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
 }
-.page-header .logo { flex-shrink: 0; margin-top: 4px; }
-.page-header .title-block { display: flex; flex-direction: column; gap: 2px; }
+.page-header .logo { flex-shrink: 0; }
 .page-header h1 {
   font-family: 'Recital', serif;
   font-size: 1.80rem;
   font-weight: 400;
   line-height: 1.1;
-  color: var(--azure);
+  color: #f0ebe2;
   letter-spacing: -0.01em;
-}
-.page-header .subtitle {
-  font-size: 0.89rem;
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--azure-muted);
-  letter-spacing: 0;
 }
 .video-section {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 28px;
+  padding: 24px 28px 0;
 }
 .video-card {
-  background: var(--almost-white);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
   border-radius: 8px;
   overflow: hidden;
   width: 100%;
   max-width: 1080px;
+  position: relative;
 }
 video {
   display: block;
@@ -96,105 +87,209 @@ video {
   max-height: 72vh;
   background: #000;
 }
-.info-bar {
-  margin: 0 28px;
-  background: var(--warm-ochre);
-  border-radius: 8px;
-  padding: 10px 14px;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-.info-bar .material-symbols-outlined {
-  font-size: 16px;
-  color: var(--almost-white);
-  margin-top: 1px;
-  flex-shrink: 0;
-}
-.info-bar p {
-  font-size: 0.878rem;
-  color: var(--almost-white);
-  line-height: 1.5;
-  font-weight: 400;
-}
-.info-bar a {
-  color: var(--almost-white);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.info-bar a:hover { opacity: 0.85; }
-.page-footer {
-  padding: 16px 28px 20px;
+
+#custom-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(60, 55, 48, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding: 10px 16px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
+  z-index: 10;
+  transition: opacity 0.3s;
 }
-.page-footer .copyright {
-  font-size: 0.73rem;
-  color: var(--azure-muted);
-  line-height: 1.4;
+#custom-controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+#custom-controls .material-symbols-outlined {
+  font-size: 22px;
+  color: #FFFFFF;
+}
+#custom-controls .time-display {
+  font-family: 'Roobert', sans-serif;
+  font-size: 0.78rem;
+  color: #FFFFFF;
+  min-width: 90px;
+}
+#custom-controls .progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+}
+#custom-controls .progress-fill {
+  height: 100%;
+  background: #FFFFFF;
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+#custom-controls .volume-slider {
+  width: 60px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255,255,255,0.3);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+#custom-controls .volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #FFFFFF;
+  border-radius: 50%;
+}
+.below-video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px 100px;
 }
 .download-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--azure);
-  color: var(--white);
+  background: #f0ebe2;
+  color: #5C3D1A;
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 12px 18px;
   border-radius: 6px;
   font-family: 'Roobert', sans-serif;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 400;
   transition: opacity 0.15s;
 }
 .download-btn:hover { opacity: 0.88; }
 .download-btn .material-symbols-outlined {
   font-size: 16px;
-  color: var(--white);
+  color: #5C3D1A;
 }
+.contact-line {
+  font-size: 0.92rem;
+  color: #f0ebe2;
+  opacity: 0.8;
+  text-align: center;
+}
+.contact-line a {
+  color: #f0ebe2;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.contact-line a:hover { opacity: 0.85; }
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--ecru-dark); }
-::-webkit-scrollbar-thumb { background: var(--burlap); border-radius: 3px; }
+::-webkit-scrollbar-track { background: #a08960; }
+::-webkit-scrollbar-thumb { background: #8a7550; border-radius: 3px; }
 @media (max-width: 768px) {
-  .page-header { padding: 20px 16px 0; }
+  .page-header { padding: 40px 16px 0; }
   .page-header h1 { font-size: 1.4rem; }
-  .video-section { padding: 16px; }
-  .info-bar { margin: 0 16px; }
-  .page-footer { padding: 12px 16px 16px; flex-direction: column; align-items: flex-start; }
+  .video-section { padding: 16px 16px 0; }
+  .below-video { padding: 16px 16px 60px; }
 }
     </style>
 </head>
 <body>
     <header class="page-header">
-        <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 183.99" height="25"><defs><style>.cls-1{fill:#10303a;}</style></defs><g><path class="cls-1" d="m0,3.16h24.76v139.42H0V3.16Z"/><path class="cls-1" d="m36.94,40.28h24.97v15.83c5.68-11.16,17.25-17.46,31.87-17.46,23.14,0,38.16,16.64,38.16,40.59v63.33h-24.97v-58.05c0-14-8.52-23.75-21.31-23.75-14,0-23.75,10.96-23.75,25.98v55.82h-24.97V40.28Z"/><path class="cls-1" d="m180.49,3.16v37.12h28.42v20.91h-28.42v43.23c0,10.35,5.48,15.63,14.82,15.63h13.6v22.53h-16.44c-22.33,0-36.94-12.99-36.94-35.72v-45.67h-20.09v-20.91h20.09V3.16h24.97Z"/><path class="cls-1" d="m221.09,3.16h24.76v139.42h-24.76V3.16Z"/><path class="cls-1" d="m258.03,130.2c0-7.92,5.89-13.6,13.6-13.6s13.8,5.68,13.8,13.6-5.89,13.6-13.8,13.6-13.6-5.89-13.6-13.6Z"/></g><g><path class="cls-1" d="m334.01,3.16h92.55v23.14h-67.79v34.99h54.4v23.14h-54.4v58.14h-24.76V3.16Z"/><path class="cls-1" d="m508.52,76.82v65.76h-24.56v-15.22c-4.26,10.15-16.03,16.85-30.65,16.85-20.3,0-34.1-12.99-34.1-30.65,0-19.89,15.43-32.27,38.36-32.27h18.88c5.07,0,7.51-2.84,7.51-6.9,0-9.95-7.33-17.05-18.89-17.05s-20.06,8.32-20.47,17.46h-22.33c1.22-20.3,18.47-36.13,45.06-36.13s41.19,15.02,41.19,38.16Zm-24.56,22.53v-1.62h-22.94c-10.55,0-17.66,5.89-17.66,14.82,0,7.92,6.5,13.19,15.83,13.19,15.63,0,24.76-10.96,24.76-26.39Z"/><path class="cls-1" d="m566.16,61.19c-15.83,0-22.12,13.6-22.12,33.08v48.31h-24.97V40.28h24.97v18.06c5.07-12.99,12.99-18.06,26.18-18.06h11.98v20.91h-16.03Z"/><path class="cls-1" d="m590.52,40.28h24.97v16.03c5.07-10.35,15.22-17.66,29.63-17.66,16.24,0,27.4,6.9,31.87,19.49,4.67-10.55,17.66-19.49,33.9-19.49,22.12,0,36.33,16.03,36.33,37.75v66.17h-24.76v-58.66c0-14.41-7.51-23.95-19.49-23.95-13.4,0-21.72,9.54-21.72,23.95v58.66h-24.76v-58.66c0-14.41-7.51-23.95-19.49-23.95-13.19,0-21.51,9.54-21.51,23.95v58.66h-24.97V40.28Z"/><path class="cls-1" d="m759.39,40.28h24.97v102.3h-24.97V40.28Z"/><path class="cls-1" d="m796.53,40.28h24.97v15.83c5.68-11.16,17.25-17.46,31.87-17.46,23.14,0,38.16,16.64,38.16,40.59v63.33h-24.97v-58.05c0-14-8.52-23.75-21.31-23.75-14,0-23.75,10.96-23.75,25.98v55.82h-24.97V40.28Z"/><path class="cls-1" d="m1000,40.28v107.98c0,21.31-15.43,35.72-38.36,35.72h-50.54v-24.76h47.09c9.95,0,17.05-7.51,17.05-18.27v-9.74c-5.07,7.92-16.85,12.99-29.63,12.99-30.85,0-48.71-21.51-48.71-52.77s17.86-52.77,48.31-52.77c12.79,0,23.95,5.28,29.84,13.19v-11.57h24.97Zm-23.14,51.15c0-18.88-10.96-31.26-27.81-31.26s-27.4,12.38-27.4,31.26,10.76,31.26,27.4,31.26,27.81-12.38,27.81-31.26Z"/><path class="cls-1" d="m758.17,13.6c0-7.92,5.89-13.6,13.6-13.6s13.8,5.68,13.8,13.6-5.89,13.6-13.8,13.6-13.6-5.89-13.6-13.6Z"/></g></svg></div>
-        <div class="title-block">
-            <h1>Brand Wizard Plugin Demo</h1>
-            <span class="subtitle">Intl. Farming Investment Management</span>
-        </div>
+        <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 183.99" height="25"><defs><style>.cls-1{fill:#f0ebe2;}</style></defs><g><path class="cls-1" d="m0,3.16h24.76v139.42H0V3.16Z"/><path class="cls-1" d="m36.94,40.28h24.97v15.83c5.68-11.16,17.25-17.46,31.87-17.46,23.14,0,38.16,16.64,38.16,40.59v63.33h-24.97v-58.05c0-14-8.52-23.75-21.31-23.75-14,0-23.75,10.96-23.75,25.98v55.82h-24.97V40.28Z"/><path class="cls-1" d="m180.49,3.16v37.12h28.42v20.91h-28.42v43.23c0,10.35,5.48,15.63,14.82,15.63h13.6v22.53h-16.44c-22.33,0-36.94-12.99-36.94-35.72v-45.67h-20.09v-20.91h20.09V3.16h24.97Z"/><path class="cls-1" d="m221.09,3.16h24.76v139.42h-24.76V3.16Z"/><path class="cls-1" d="m258.03,130.2c0-7.92,5.89-13.6,13.6-13.6s13.8,5.68,13.8,13.6-5.89,13.6-13.8,13.6-13.6-5.89-13.6-13.6Z"/></g><g><path class="cls-1" d="m334.01,3.16h92.55v23.14h-67.79v34.99h54.4v23.14h-54.4v58.14h-24.76V3.16Z"/><path class="cls-1" d="m508.52,76.82v65.76h-24.56v-15.22c-4.26,10.15-16.03,16.85-30.65,16.85-20.3,0-34.1-12.99-34.1-30.65,0-19.89,15.43-32.27,38.36-32.27h18.88c5.07,0,7.51-2.84,7.51-6.9,0-9.95-7.33-17.05-18.89-17.05s-20.06,8.32-20.47,17.46h-22.33c1.22-20.3,18.47-36.13,45.06-36.13s41.19,15.02,41.19,38.16Zm-24.56,22.53v-1.62h-22.94c-10.55,0-17.66,5.89-17.66,14.82,0,7.92,6.5,13.19,15.83,13.19,15.63,0,24.76-10.96,24.76-26.39Z"/><path class="cls-1" d="m566.16,61.19c-15.83,0-22.12,13.6-22.12,33.08v48.31h-24.97V40.28h24.97v18.06c5.07-12.99,12.99-18.06,26.18-18.06h11.98v20.91h-16.03Z"/><path class="cls-1" d="m590.52,40.28h24.97v16.03c5.07-10.35,15.22-17.66,29.63-17.66,16.24,0,27.4,6.9,31.87,19.49,4.67-10.55,17.66-19.49,33.9-19.49,22.12,0,36.33,16.03,36.33,37.75v66.17h-24.76v-58.66c0-14.41-7.51-23.95-19.49-23.95-13.4,0-21.72,9.54-21.72,23.95v58.66h-24.76v-58.66c0-14.41-7.51-23.95-19.49-23.95-13.19,0-21.51,9.54-21.51,23.95v58.66h-24.97V40.28Z"/><path class="cls-1" d="m759.39,40.28h24.97v102.3h-24.97V40.28Z"/><path class="cls-1" d="m796.53,40.28h24.97v15.83c5.68-11.16,17.25-17.46,31.87-17.46,23.14,0,38.16,16.64,38.16,40.59v63.33h-24.97v-58.05c0-14-8.52-23.75-21.31-23.75-14,0-23.75,10.96-23.75,25.98v55.82h-24.97V40.28Z"/><path class="cls-1" d="m1000,40.28v107.98c0,21.31-15.43,35.72-38.36,35.72h-50.54v-24.76h47.09c9.95,0,17.05-7.51,17.05-18.27v-9.74c-5.07,7.92-16.85,12.99-29.63,12.99-30.85,0-48.71-21.51-48.71-52.77s17.86-52.77,48.31-52.77c12.79,0,23.95,5.28,29.84,13.19v-11.57h24.97Zm-23.14,51.15c0-18.88-10.96-31.26-27.81-31.26s-27.4,12.38-27.4,31.26,10.76,31.26,27.4,31.26,27.81-12.38,27.81-31.26Z"/><path class="cls-1" d="m758.17,13.6c0-7.92,5.89-13.6,13.6-13.6s13.8,5.68,13.8,13.6-5.89,13.6-13.8,13.6-13.6-5.89-13.6-13.6Z"/></g></svg></div>
+        <h1>Brand Wizard Plugin Demo</h1>
     </header>
     <main class="video-section">
         <div class="video-card">
-            <video controls preload="metadata" playsinline>
+            <video preload="metadata" playsinline id="mainVideo">
                 <source src="https://github.com/eGrayIF/if-brand-wizard-demo/releases/download/v1.0/IFBrandWizardClaudeDemo.mov" type="video/quicktime">
                 <source src="https://github.com/eGrayIF/if-brand-wizard-demo/releases/download/v1.0/IFBrandWizardClaudeDemo.mov" type="video/mp4">
                 Your browser does not support the video tag.
                 <a href="https://github.com/eGrayIF/if-brand-wizard-demo/releases/download/v1.0/IFBrandWizardClaudeDemo.mov">Download the video</a>
             </video>
+            <div id="custom-controls">
+                <button id="playBtn"><span class="material-symbols-outlined">play_arrow</span></button>
+                <span class="time-display"><span id="currentTime">0:00</span> / <span id="duration">0:00</span></span>
+                <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+                <button id="muteBtn"><span class="material-symbols-outlined">volume_up</span></button>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.05" value="1">
+                <button id="fullscreenBtn"><span class="material-symbols-outlined">fullscreen</span></button>
+            </div>
         </div>
     </main>
-    <div class="info-bar">
-        <span class="material-symbols-outlined">info</span>
-        <p>This demo shows the I.F. Brand Wizard Plugin auto-enforcing the Intl. Farming visual identity on documents, dashboards, and presentations created in Claude.
-        <a href="https://github.com/eGrayIF/if-brand-wizard-demo/releases/download/v1.0/IFBrandWizardClaudeDemo.mov">Download the full video</a> if playback is slow.</p>
-    </div>
-    <footer class="page-footer">
-        <span class="copyright">&copy; 2026 Intl. Farming Investment Management, LLC</span>
+    <div class="below-video">
         <a class="download-btn" href="https://github.com/eGrayIF/if-brand-wizard-demo/releases/download/v1.0/IFBrandWizardClaudeDemo.mov">
             <span class="material-symbols-outlined">download</span>
             Download Video
         </a>
-    </footer>
+        <p class="contact-line">For any questions, please reach out to <a href="mailto:egray@intlfarming.com">egray@intlfarming.com</a></p>
+    </div>
+    <script>
+    const video = document.getElementById('mainVideo');
+    const playBtn = document.getElementById('playBtn');
+    const muteBtn = document.getElementById('muteBtn');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const progressBar = document.getElementById('progressBar');
+    const progressFill = document.getElementById('progressFill');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationEl = document.getElementById('duration');
+
+    function fmt(s) {
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    playBtn.addEventListener('click', () => {
+        if (video.paused) { video.play(); } else { video.pause(); }
+    });
+    video.addEventListener('play', () => {
+        playBtn.querySelector('span').textContent = 'pause';
+    });
+    video.addEventListener('pause', () => {
+        playBtn.querySelector('span').textContent = 'play_arrow';
+    });
+    video.addEventListener('loadedmetadata', () => {
+        durationEl.textContent = fmt(video.duration);
+    });
+    video.addEventListener('timeupdate', () => {
+        currentTimeEl.textContent = fmt(video.currentTime);
+        if (video.duration) {
+            progressFill.style.width = (video.currentTime / video.duration * 100) + '%';
+        }
+    });
+    progressBar.addEventListener('click', (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        video.currentTime = ((e.clientX - rect.left) / rect.width) * video.duration;
+    });
+    muteBtn.addEventListener('click', () => {
+        video.muted = !video.muted;
+        muteBtn.querySelector('span').textContent = video.muted ? 'volume_off' : 'volume_up';
+    });
+    volumeSlider.addEventListener('input', (e) => {
+        video.volume = e.target.value;
+    });
+    fullscreenBtn.addEventListener('click', () => {
+        const card = document.querySelector('.video-card');
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            card.requestFullscreen();
+        }
+    });
+    video.addEventListener('click', () => {
+        if (video.paused) { video.play(); } else { video.pause(); }
+    });
+    </script>
 </body>
 </html>
